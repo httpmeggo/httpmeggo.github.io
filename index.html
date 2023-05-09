@@ -11,6 +11,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="https://www.google.com/recaptcha/api.js?render={your-site-key}"></script>
+		<script>
+			grecaptcha.ready(function () {
+				grecaptcha.execute('{your-site-key}', {action: 'submit'}).then(function (token) {
+					console.info("got token: " + token);
+					document.getElementById('g-recaptcha-response').value = token;
+				});
+			});
+		</script>
 	</head>
 	<body class="is-preload">
 
@@ -32,9 +41,9 @@
 							<ul>
 								<li><a href="#intro">Intro</a></li>
 								<li><a href="#projects">Projects</a></li>
-								<li><a href="https://drive.google.com/file/d/1HBusXmkzqeFlsa1rnzmPUx2rKJNKJRwX/view?usp=sharing">Resume</a></li>
-								<li><a href="https://www.linkedin.com/in/megan-nicius">LinkedIn</a></li>
-								<!-- <li><a href="#contact">Contact</a></li> -->
+								<li><a href="https://drive.google.com/file/d/1QdGE1Q_NyaoMUpnBv0zYSWGj8h-GpqBr/view?usp=sharing">Resume</a></li>
+								<!-- <li><a href="https://www.linkedin.com/in/megan-nicius">LinkedIn</a></li> -->
+								<li><a href="#contact">Contact</a></li>
 							</ul>
 						</nav>
 					</header>
@@ -74,12 +83,29 @@
 						<!-- Contact -->
 							<article id="contact">
 								<h2 class="major">Contact</h2>
-								<form action="" method="POST" id="registrationform">
-									<h1>Register</h1>
-									<div class="alert">Submitted!</div>
+																<!-- modify this form HTML and place wherever you want your form -->
+								<form action="https://formspree.io/f/mrgvjbvd" method="POST">
+									<label> Your name: <input type="text" name="name"></label>
+									<label> Your email: <input type="email" name="email"></label>
+									<label> Your phone number: <input type="tel" name="phone"></label>
+									<label> Your message: <textarea name="message"></textarea></label>
+									<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+									<input type="submit" class="btn btn-primary" value="submit"/>
+									<!-- your other form fields go here -->
+								<!-- <button type="submit">Send</button> -->
+								</form>
+								<!-- <form action="https://formspree.io/f/mrgvjbvd" method="POST">
+									<input name="email" type="email">
+									<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+									<input type="submit" class="btn btn-primary" value="submit"/>
+								</form> -->
+								<!-- <form action="" method="POST" id="registrationform">
+									<h1>Register</h1> -->
+								
+									<!-- <div class="alert">Submitted!</div> -->
 								
 									<!-- Section 1 -->
-									<fieldset>
+									<!-- <fieldset>
 									  <legend></legend>
 									  <br />
 									  <label class="" for="name">Name:</label>
@@ -90,10 +116,10 @@
 									  <br />
 									  <label for="phone">Phone:</label>
 									  <input type="phone" name="phone" value="" id="phone" required />
-									</fieldset>
+									</fieldset> -->
 								
 									<!-- section 2 -->
-									<br />
+									<!-- <br />
 									<fieldset>
 									  <legend><span class="section"></span></legend>
 									  <label class="" for="message">Message:</label>
@@ -102,22 +128,22 @@
 
 									  <label for="job">Job Role:</label>
 									  <select name="job" id="job" required>
-										<!-- <optgroup label="Web"> -->
-										  <option value="front_end_developer">Frontend Developer</option>
+										<optgroup label="Web"> -->
+										  <!-- <option value="front_end_developer">Frontend Developer</option>
 										  <option value="back_end_developer">Backend Developer</option>
 										  <option value="fullstack_developer">Fullstack Developer</option>
 										  <option value="android">Android Developer</option>
 										  <option value="ios">iOS Developer</option>
-										  <option value="other">Other</option>
+										  <option value="other">Other</option> -->
 										<!-- </optgroup> -->
-									  </select>
-									  <br />
+									  <!-- </select>
+									  <br /> -->
 									 
 								
-									  <button type="submit" sendMessage()>Submit</button>
+									  <!-- <button type="submit" sendMessage()>Submit</button> -->
 								  </form>
 								
-								  <script type="module">
+								  <!-- <script type="module">
 									// Import the functions you need from the SDKs you need
 									import { initializeApp } from "firebase/app";
 									import { getAnalytics } from "firebase/analytics";
@@ -182,10 +208,10 @@
 										}).catch((error) => {
 											alert(error)
 										})
-									}
+									} -->
 								  </script>
 								
-								<br /><br /><br /><br /><br /><br />
+								<br /><br /><br />
 								<h3>Want to stay connected?</h3>
 								<p>Feel free to reach out to me on LinkedIn, and check out my Github page to stay up-to-date on my projects.</p>
 								<ul class="icons">
